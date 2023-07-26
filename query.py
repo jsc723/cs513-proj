@@ -17,7 +17,7 @@ def main():
     num_of_reviews = review_count_df['num_of_reviews'][0]
     print(f'most_significant_reviewer: "{most_significant_reviewer}", num_of_reviews: {num_of_reviews}')
 
-    result_df = ps.sqldf(f'''SELECT variety, avg(normalized_points) as avg_points, min(price) as min_price, max(price) as max_price
+    result_df = ps.sqldf(f'''SELECT variety, count(*) as num_of_reviews, avg(normalized_points) as avg_points, min(price) as min_price, max(price) as max_price
              FROM df WHERE taster_name = "{most_significant_reviewer}" GROUP BY variety''')
 
     print(result_df.to_string(index=False))
