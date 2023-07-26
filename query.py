@@ -2,7 +2,7 @@ import pandas as pd
 import pandasql as ps
 
 def main():
-    input_path = './output.csv'
+    input_path = './step2_python/cleaned.csv'
     df = pd.read_csv(input_path, header=0)
 
     print('-----input data-----')
@@ -13,8 +13,8 @@ def main():
 
     review_count_df = ps.sqldf('''SELECT taster_name, count(*) as num_of_reviews FROM df GROUP BY taster_name ORDER BY num_of_reviews DESC''')
     print(review_count_df)
-    most_significant_reviewer = review_count_df['taster_name'][1]
-    num_of_reviews = review_count_df['num_of_reviews'][1]
+    most_significant_reviewer = review_count_df['taster_name'][0]
+    num_of_reviews = review_count_df['num_of_reviews'][0]
     print(f'most_significant_reviewer: "{most_significant_reviewer}", num_of_reviews: {num_of_reviews}')
 
     result_df = ps.sqldf(f'''SELECT variety, avg(normalized_points) as avg_points, min(price) as min_price, max(price) as max_price

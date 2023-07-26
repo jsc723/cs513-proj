@@ -1,4 +1,5 @@
 import pandas as pd
+from sys import argv
 
 # check null, n/a, (blank)
 def check_empty_values(df):
@@ -43,8 +44,8 @@ def check_twitter_handle(df):
 
 
 def main():
-    input_path = './data/winemag-data-130k-v2.csv'
-    save_path = 'output.csv'
+    input_path = argv[1] 
+    save_path = './step2_python/cleaned.csv'
     df = pd.read_csv(input_path, header=0)
 
     print('-----input data-----')
