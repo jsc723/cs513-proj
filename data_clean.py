@@ -1,4 +1,5 @@
 import pandas as pd
+
 # check null, n/a, (blank)
 def check_empty_values(df):
     print('-----check_empty_values-----')
@@ -7,7 +8,7 @@ def check_empty_values(df):
         blank_count = df[col].isnull().sum()
         null_count = (df[col].astype(str).str.lower() == 'null').sum()
         na_count = (df[col].astype(str).str.lower() == 'n/a').sum()
-        print(f'column "{col}": blank={blank_count}, null={null_count}, na={na_count}')
+        print(f'column "{col}": blank={blank_count}, null={null_count}, n/a={na_count}')
 
 # check points and prices are numeric
 def convert_to_numeric_columns(df):
@@ -26,11 +27,12 @@ def normalize_points(df):
     col = 'points'
     n_min, n_max = df[col].min(), df[col].max()
     df['normalized_points'] = (df[col] - n_min) / (n_max - n_min) * 10
+    print('done')
 
 
 # each twitter handle should belong to exactly one person
-def check_multi_to_one(df):
-    print('-----check_multi_to_one-----')
+def check_twitter_handle(df):
+    print('-----check_twitter_handle-----')
     c1 = 'taster_twitter_handle'           #one
     c2 = 'taster_name'                     #multi
     df = df[[c1,c2]]
@@ -50,7 +52,7 @@ def main():
     check_empty_values(df)
     convert_to_numeric_columns(df)
     normalize_points(df)
-    check_multi_to_one(df)
+    check_twitter_handle(df)
 
     print('-----cleaned data-----')
     print(df.head())
