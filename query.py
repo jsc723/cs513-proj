@@ -1,8 +1,9 @@
 import pandas as pd
 import pandasql as ps
+from sys import argv
 
 def main():
-    input_path = './step2_python/cleaned.csv'
+    input_path = argv[1]
     df = pd.read_csv(input_path, header=0)
 
     print('-----input data-----')

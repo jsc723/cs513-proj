@@ -15,7 +15,7 @@ subgraph cluster_workflow_box_inner { label=""; penwidth=0
 node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
 
 /* Nodes representing atomic programs in workflow */
-data_profiling [shape=record rankdir=LR label="{<f0> data_profiling |<f1> Using Python}"];
+data_profiling [shape=record rankdir=LR label="{<f0> data_profiling |<f1> Using OpenRefine}"];
 data_cleaning [shape=record rankdir=LR label="{<f0> data_cleaning |<f1> Using OpenRefine}"];
 ic_violation_check [shape=record rankdir=LR label="{<f0> ic_violation_check |<f1> Using Python}"];
 
