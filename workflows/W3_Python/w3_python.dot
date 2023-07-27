@@ -1,0 +1,70 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Title for graph */
+fontname=Helvetica; fontsize=18; labelloc=t
+label=ic_violation_check_workflow
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing atomic programs in workflow */
+load_data [shape=record rankdir=LR label="{<f0> load_data |<f1> load CSV into DataFrame}"];
+normalize_points [shape=record rankdir=LR label="{<f0> normalize_points |<f1> Normalize points into the range 0-10}"];
+reset_index [shape=record rankdir=LR label="{<f0> reset_index |<f1> Reset the index of the dataframe}"];
+save_data [shape=record rankdir=LR label="{<f0> save_data |<f1> save DataFrame as CSV}"];
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+"normalized_cleaned_data.csv"
+"cleaned_data.csv"
+dataframe
+normalized_dataframe
+resetted_normalized_dataframe
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+
+/* Edges representing connections between programs and channels */
+load_data -> dataframe
+"cleaned_data.csv" -> load_data
+normalize_points -> normalized_dataframe
+dataframe -> normalize_points
+reset_index -> resetted_normalized_dataframe
+normalized_dataframe -> reset_index
+save_data -> "normalized_cleaned_data.csv"
+resetted_normalized_dataframe -> save_data
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* Style for nodes representing workflow input ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow input ports */
+"cleaned_data.csv_input_port" [label=""]
+
+/* Style for nodes representing workflow output ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow output ports */
+"normalized_cleaned_data.csv_output_port" [label=""]
+
+/* Edges from input ports to channels */
+"cleaned_data.csv_input_port" -> "cleaned_data.csv"
+
+/* Edges from channels to output ports */
+"normalized_cleaned_data.csv" -> "normalized_cleaned_data.csv_output_port"
+
+/* End of top-level graph */
+}
