@@ -1,0 +1,258 @@
+#@begin Linear_OR #@desc Linear OpenRefine Workflow
+#@param col-name:winery
+#@param expression:value.replace(/[\\p{Zs}\\s]+/,'_')
+#@param expression:"isBlank(value)"
+#@param col-name:variety
+#@param col-name:region
+#@param col-name:price
+#@param col-name:region_2
+#@param expression:grel:if(isBlank(value),_"@WineEnthusiast",_value)
+#@param col-name:taster_name
+#@param col-name:taster_twitter_handle
+#@param expression:value.toNumber()
+#@param expression:grel:value.replace(/,+\\s*$/,'').trim()
+#@param newColumnName:region
+#@param col-name:region_1
+#@param col-name:designation
+#@param col-name:description
+#@param col-name:country
+#@param expression:join_([coalesce(cells['region_1'].value,''),coalesce(cells['province'].value,'')],'')
+#@param expression:value.trim()
+#@param col-name:points
+#@param col-name:province
+#@param col-name:title
+#@param col-name:Column
+#@in table0
+#@out table40
+#@begin core/row-removal0#@desc Remove rows
+#@param col-name:country
+#@param expression:"isBlank(value)"
+#@in table0
+#@out table1
+#@end core/row-removal0
+#@begin core/row-removal1#@desc Remove rows
+#@param col-name:designation
+#@param expression:"isBlank(value)"
+#@in table1
+#@out table2
+#@end core/row-removal1
+#@begin core/row-removal2#@desc Remove rows
+#@param col-name:price
+#@param expression:"isBlank(value)"
+#@in table2
+#@out table3
+#@end core/row-removal2
+#@begin core/text-transform0#@desc Text transform on cells in column region_1 using expression join ([coalesce(cells['region_1'].value,''),coalesce(cells['province'].value,'')],'')
+#@param col-name:region_1
+#@param expression:join_([coalesce(cells['region_1'].value,''),coalesce(cells['province'].value,'')],'')
+#@in table3
+#@out table4
+#@end core/text-transform0
+#@begin core/column-addition0#@desc Create column region at index 8 based on column region_1 using expression join ([coalesce(cells['region_1'].value,''),coalesce(cells['region_2'].value,'')],', ')
+#@param col-name:region_1
+#@param newColumnName:"region"
+#@in table4
+#@out table5
+#@end core/column-addition0
+#@begin core/text-transform1#@desc Text transform on cells in column region using expression grel:value.replace(/,+\\s*$/,'').trim()
+#@param col-name:region
+#@param expression:grel:value.replace(/,+\\s*$/,'').trim()
+#@in table5
+#@out table6
+#@end core/text-transform1
+#@begin core/column-removal0#@desc Remove column region_1
+#@param col-name:region_1
+#@in table6
+#@out table7
+#@end core/column-removal0
+#@begin core/column-removal1#@desc Remove column region_2
+#@param col-name:region_2
+#@in table7
+#@out table8
+#@end core/column-removal1
+#@begin core/row-removal3#@desc Remove rows
+#@param col-name:taster_name
+#@param expression:"isBlank(value)"
+#@in table8
+#@out table9
+#@end core/row-removal3
+#@begin core/text-transform2#@desc Text transform on cells in column taster_twitter_handle using expression grel:if(isBlank(value), \"@WineEnthusiast\", value)
+#@param col-name:taster_twitter_handle
+#@param expression:grel:if(isBlank(value),_"@WineEnthusiast",_value)
+#@in table9
+#@out table10
+#@end core/text-transform2
+#@begin core/mass-edit0#@desc Mass edit cells in column designation
+#@param col-name:designation
+#@in table10
+#@out table11
+#@end core/mass-edit0
+#@begin core/mass-edit1#@desc Mass edit cells in column designation
+#@param col-name:designation
+#@in table11
+#@out table12
+#@end core/mass-edit1
+#@begin core/mass-edit2#@desc Mass edit cells in column region
+#@param col-name:region
+#@in table12
+#@out table13
+#@end core/mass-edit2
+#@begin core/mass-edit3#@desc Mass edit cells in column title
+#@param col-name:title
+#@in table13
+#@out table14
+#@end core/mass-edit3
+#@begin core/mass-edit4#@desc Mass edit cells in column title
+#@param col-name:title
+#@in table14
+#@out table15
+#@end core/mass-edit4
+#@begin core/mass-edit5#@desc Mass edit cells in column winery
+#@param col-name:winery
+#@in table15
+#@out table16
+#@end core/mass-edit5
+#@begin core/mass-edit6#@desc Mass edit cells in column winery
+#@param col-name:winery
+#@in table16
+#@out table17
+#@end core/mass-edit6
+#@begin core/text-transform3#@desc Text transform on cells in column Column using expression value.toNumber()
+#@param col-name:Column
+#@param expression:value.toNumber()
+#@in table17
+#@out table18
+#@end core/text-transform3
+#@begin core/text-transform4#@desc Text transform on cells in column points using expression value.toNumber()
+#@param col-name:points
+#@param expression:value.toNumber()
+#@in table18
+#@out table19
+#@end core/text-transform4
+#@begin core/text-transform5#@desc Text transform on cells in column price using expression value.toNumber()
+#@param col-name:price
+#@param expression:value.toNumber()
+#@in table19
+#@out table20
+#@end core/text-transform5
+#@begin core/text-transform6#@desc Text transform on cells in column country using expression value.trim()
+#@param col-name:country
+#@param expression:value.trim()
+#@in table20
+#@out table21
+#@end core/text-transform6
+#@begin core/text-transform7#@desc Text transform on cells in column country using expression value.replace(/[\\p{Zs}\\s]+/,' ')
+#@param col-name:country
+#@param expression:value.replace(/[\\p{Zs}\\s]+/,'_')
+#@in table21
+#@out table22
+#@end core/text-transform7
+#@begin core/text-transform8#@desc Text transform on cells in column description using expression value.trim()
+#@param col-name:description
+#@param expression:value.trim()
+#@in table22
+#@out table23
+#@end core/text-transform8
+#@begin core/text-transform9#@desc Text transform on cells in column description using expression value.replace(/[\\p{Zs}\\s]+/,' ')
+#@param col-name:description
+#@param expression:value.replace(/[\\p{Zs}\\s]+/,'_')
+#@in table23
+#@out table24
+#@end core/text-transform9
+#@begin core/text-transform10#@desc Text transform on cells in column designation using expression value.trim()
+#@param col-name:designation
+#@param expression:value.trim()
+#@in table24
+#@out table25
+#@end core/text-transform10
+#@begin core/text-transform11#@desc Text transform on cells in column designation using expression value.replace(/[\\p{Zs}\\s]+/,' ')
+#@param col-name:designation
+#@param expression:value.replace(/[\\p{Zs}\\s]+/,'_')
+#@in table25
+#@out table26
+#@end core/text-transform11
+#@begin core/text-transform12#@desc Text transform on cells in column province using expression value.trim()
+#@param col-name:province
+#@param expression:value.trim()
+#@in table26
+#@out table27
+#@end core/text-transform12
+#@begin core/text-transform13#@desc Text transform on cells in column province using expression value.replace(/[\\p{Zs}\\s]+/,' ')
+#@param col-name:province
+#@param expression:value.replace(/[\\p{Zs}\\s]+/,'_')
+#@in table27
+#@out table28
+#@end core/text-transform13
+#@begin core/text-transform14#@desc Text transform on cells in column region using expression value.trim()
+#@param col-name:region
+#@param expression:value.trim()
+#@in table28
+#@out table29
+#@end core/text-transform14
+#@begin core/text-transform15#@desc Text transform on cells in column region using expression value.replace(/[\\p{Zs}\\s]+/,' ')
+#@param col-name:region
+#@param expression:value.replace(/[\\p{Zs}\\s]+/,'_')
+#@in table29
+#@out table30
+#@end core/text-transform15
+#@begin core/text-transform16#@desc Text transform on cells in column taster_name using expression value.trim()
+#@param col-name:taster_name
+#@param expression:value.trim()
+#@in table30
+#@out table31
+#@end core/text-transform16
+#@begin core/text-transform17#@desc Text transform on cells in column taster_name using expression value.replace(/[\\p{Zs}\\s]+/,' ')
+#@param col-name:taster_name
+#@param expression:value.replace(/[\\p{Zs}\\s]+/,'_')
+#@in table31
+#@out table32
+#@end core/text-transform17
+#@begin core/text-transform18#@desc Text transform on cells in column taster_twitter_handle using expression value.trim()
+#@param col-name:taster_twitter_handle
+#@param expression:value.trim()
+#@in table32
+#@out table33
+#@end core/text-transform18
+#@begin core/text-transform19#@desc Text transform on cells in column taster_twitter_handle using expression value.replace(/[\\p{Zs}\\s]+/,' ')
+#@param col-name:taster_twitter_handle
+#@param expression:value.replace(/[\\p{Zs}\\s]+/,'_')
+#@in table33
+#@out table34
+#@end core/text-transform19
+#@begin core/text-transform20#@desc Text transform on cells in column title using expression value.trim()
+#@param col-name:title
+#@param expression:value.trim()
+#@in table34
+#@out table35
+#@end core/text-transform20
+#@begin core/text-transform21#@desc Text transform on cells in column title using expression value.replace(/[\\p{Zs}\\s]+/,' ')
+#@param col-name:title
+#@param expression:value.replace(/[\\p{Zs}\\s]+/,'_')
+#@in table35
+#@out table36
+#@end core/text-transform21
+#@begin core/text-transform22#@desc Text transform on cells in column variety using expression value.trim()
+#@param col-name:variety
+#@param expression:value.trim()
+#@in table36
+#@out table37
+#@end core/text-transform22
+#@begin core/text-transform23#@desc Text transform on cells in column variety using expression value.replace(/[\\p{Zs}\\s]+/,' ')
+#@param col-name:variety
+#@param expression:value.replace(/[\\p{Zs}\\s]+/,'_')
+#@in table37
+#@out table38
+#@end core/text-transform23
+#@begin core/text-transform24#@desc Text transform on cells in column winery using expression value.trim()
+#@param col-name:winery
+#@param expression:value.trim()
+#@in table38
+#@out table39
+#@end core/text-transform24
+#@begin core/text-transform25#@desc Text transform on cells in column winery using expression value.replace(/[\\p{Zs}\\s]+/,' ')
+#@param col-name:winery
+#@param expression:value.replace(/[\\p{Zs}\\s]+/,'_')
+#@in table39
+#@out table40
+#@end core/text-transform25
+#@end Linear_OR

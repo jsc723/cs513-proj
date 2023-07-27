@@ -1,0 +1,351 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Title for graph */
+fontname=Helvetica; fontsize=18; labelloc=t
+label=Linear_OR
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing atomic programs in workflow */
+"core/row-removal0#" [shape=record rankdir=LR label="{<f0> core/row-removal0# |<f1> Remove rows}"];
+"core/row-removal1#" [shape=record rankdir=LR label="{<f0> core/row-removal1# |<f1> Remove rows}"];
+"core/row-removal2#" [shape=record rankdir=LR label="{<f0> core/row-removal2# |<f1> Remove rows}"];
+"core/text-transform0#" [shape=record rankdir=LR label="{<f0> core/text-transform0# |<f1> Text transform on cells in column region_1 using expression join ([coalesce(cells['region_1'].value,''),coalesce(cells['province'].value,'')],'')}"];
+"core/column-addition0#" [shape=record rankdir=LR label="{<f0> core/column-addition0# |<f1> Create column region at index 8 based on column region_1 using expression join ([coalesce(cells['region_1'].value,''),coalesce(cells['region_2'].value,'')],', ')}"];
+"core/text-transform1#" [shape=record rankdir=LR label="{<f0> core/text-transform1# |<f1> Text transform on cells in column region using expression grel\:value.replace(/,+\\s*$/,'').trim()}"];
+"core/column-removal0#" [shape=record rankdir=LR label="{<f0> core/column-removal0# |<f1> Remove column region_1}"];
+"core/column-removal1#" [shape=record rankdir=LR label="{<f0> core/column-removal1# |<f1> Remove column region_2}"];
+"core/row-removal3#" [shape=record rankdir=LR label="{<f0> core/row-removal3# |<f1> Remove rows}"];
+"core/text-transform2#" [shape=record rankdir=LR label="{<f0> core/text-transform2# |<f1> Text transform on cells in column taster_twitter_handle using expression grel\:if(isBlank(value), \"@WineEnthusiast\", value)}"];
+"core/mass-edit0#" [shape=record rankdir=LR label="{<f0> core/mass-edit0# |<f1> Mass edit cells in column designation}"];
+"core/mass-edit1#" [shape=record rankdir=LR label="{<f0> core/mass-edit1# |<f1> Mass edit cells in column designation}"];
+"core/mass-edit2#" [shape=record rankdir=LR label="{<f0> core/mass-edit2# |<f1> Mass edit cells in column region}"];
+"core/mass-edit3#" [shape=record rankdir=LR label="{<f0> core/mass-edit3# |<f1> Mass edit cells in column title}"];
+"core/mass-edit4#" [shape=record rankdir=LR label="{<f0> core/mass-edit4# |<f1> Mass edit cells in column title}"];
+"core/mass-edit5#" [shape=record rankdir=LR label="{<f0> core/mass-edit5# |<f1> Mass edit cells in column winery}"];
+"core/mass-edit6#" [shape=record rankdir=LR label="{<f0> core/mass-edit6# |<f1> Mass edit cells in column winery}"];
+"core/text-transform3#" [shape=record rankdir=LR label="{<f0> core/text-transform3# |<f1> Text transform on cells in column Column using expression value.toNumber()}"];
+"core/text-transform4#" [shape=record rankdir=LR label="{<f0> core/text-transform4# |<f1> Text transform on cells in column points using expression value.toNumber()}"];
+"core/text-transform5#" [shape=record rankdir=LR label="{<f0> core/text-transform5# |<f1> Text transform on cells in column price using expression value.toNumber()}"];
+"core/text-transform6#" [shape=record rankdir=LR label="{<f0> core/text-transform6# |<f1> Text transform on cells in column country using expression value.trim()}"];
+"core/text-transform7#" [shape=record rankdir=LR label="{<f0> core/text-transform7# |<f1> Text transform on cells in column country using expression value.replace(/[\\p\{Zs\}\\s]+/,' ')}"];
+"core/text-transform8#" [shape=record rankdir=LR label="{<f0> core/text-transform8# |<f1> Text transform on cells in column description using expression value.trim()}"];
+"core/text-transform9#" [shape=record rankdir=LR label="{<f0> core/text-transform9# |<f1> Text transform on cells in column description using expression value.replace(/[\\p\{Zs\}\\s]+/,' ')}"];
+"core/text-transform10#" [shape=record rankdir=LR label="{<f0> core/text-transform10# |<f1> Text transform on cells in column designation using expression value.trim()}"];
+"core/text-transform11#" [shape=record rankdir=LR label="{<f0> core/text-transform11# |<f1> Text transform on cells in column designation using expression value.replace(/[\\p\{Zs\}\\s]+/,' ')}"];
+"core/text-transform12#" [shape=record rankdir=LR label="{<f0> core/text-transform12# |<f1> Text transform on cells in column province using expression value.trim()}"];
+"core/text-transform13#" [shape=record rankdir=LR label="{<f0> core/text-transform13# |<f1> Text transform on cells in column province using expression value.replace(/[\\p\{Zs\}\\s]+/,' ')}"];
+"core/text-transform14#" [shape=record rankdir=LR label="{<f0> core/text-transform14# |<f1> Text transform on cells in column region using expression value.trim()}"];
+"core/text-transform15#" [shape=record rankdir=LR label="{<f0> core/text-transform15# |<f1> Text transform on cells in column region using expression value.replace(/[\\p\{Zs\}\\s]+/,' ')}"];
+"core/text-transform16#" [shape=record rankdir=LR label="{<f0> core/text-transform16# |<f1> Text transform on cells in column taster_name using expression value.trim()}"];
+"core/text-transform17#" [shape=record rankdir=LR label="{<f0> core/text-transform17# |<f1> Text transform on cells in column taster_name using expression value.replace(/[\\p\{Zs\}\\s]+/,' ')}"];
+"core/text-transform18#" [shape=record rankdir=LR label="{<f0> core/text-transform18# |<f1> Text transform on cells in column taster_twitter_handle using expression value.trim()}"];
+"core/text-transform19#" [shape=record rankdir=LR label="{<f0> core/text-transform19# |<f1> Text transform on cells in column taster_twitter_handle using expression value.replace(/[\\p\{Zs\}\\s]+/,' ')}"];
+"core/text-transform20#" [shape=record rankdir=LR label="{<f0> core/text-transform20# |<f1> Text transform on cells in column title using expression value.trim()}"];
+"core/text-transform21#" [shape=record rankdir=LR label="{<f0> core/text-transform21# |<f1> Text transform on cells in column title using expression value.replace(/[\\p\{Zs\}\\s]+/,' ')}"];
+"core/text-transform22#" [shape=record rankdir=LR label="{<f0> core/text-transform22# |<f1> Text transform on cells in column variety using expression value.trim()}"];
+"core/text-transform23#" [shape=record rankdir=LR label="{<f0> core/text-transform23# |<f1> Text transform on cells in column variety using expression value.replace(/[\\p\{Zs\}\\s]+/,' ')}"];
+"core/text-transform24#" [shape=record rankdir=LR label="{<f0> core/text-transform24# |<f1> Text transform on cells in column winery using expression value.trim()}"];
+"core/text-transform25#" [shape=record rankdir=LR label="{<f0> core/text-transform25# |<f1> Text transform on cells in column winery using expression value.replace(/[\\p\{Zs\}\\s]+/,' ')}"];
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+table40
+table0
+table1
+table2
+table3
+table4
+table5
+table6
+table7
+table8
+table9
+table10
+table11
+table12
+table13
+table14
+table15
+table16
+table17
+table18
+table19
+table20
+table21
+table22
+table23
+table24
+table25
+table26
+table27
+table28
+table29
+table30
+table31
+table32
+table33
+table34
+table35
+table36
+table37
+table38
+table39
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+"col-name:country"
+"expression:\"isBlank(value)\""
+"col-name:designation"
+"col-name:price"
+"col-name:region_1"
+"expression:join_([coalesce(cells['region_1'].value,''),coalesce(cells['province'].value,'')],'')"
+"col-name:region"
+"expression:grel:value.replace(/,+\\s*$/,'').trim()"
+"col-name:region_2"
+"col-name:taster_name"
+"col-name:taster_twitter_handle"
+"expression:grel:if(isBlank(value),_\"@WineEnthusiast\",_value)"
+"col-name:title"
+"col-name:winery"
+"col-name:Column"
+"expression:value.toNumber()"
+"col-name:points"
+"expression:value.trim()"
+"expression:value.replace(/[\\p{Zs}\\s]+/,'_')"
+"col-name:description"
+"col-name:province"
+"col-name:variety"
+
+/* Edges representing connections between programs and channels */
+"core/row-removal0#" -> table1
+"col-name:country" -> "core/row-removal0#"
+"expression:\"isBlank(value)\"" -> "core/row-removal0#"
+table0 -> "core/row-removal0#"
+"core/row-removal1#" -> table2
+"col-name:designation" -> "core/row-removal1#"
+"expression:\"isBlank(value)\"" -> "core/row-removal1#"
+table1 -> "core/row-removal1#"
+"core/row-removal2#" -> table3
+"col-name:price" -> "core/row-removal2#"
+"expression:\"isBlank(value)\"" -> "core/row-removal2#"
+table2 -> "core/row-removal2#"
+"core/text-transform0#" -> table4
+"col-name:region_1" -> "core/text-transform0#"
+"expression:join_([coalesce(cells['region_1'].value,''),coalesce(cells['province'].value,'')],'')" -> "core/text-transform0#"
+table3 -> "core/text-transform0#"
+"core/column-addition0#" -> table5
+"col-name:region_1" -> "core/column-addition0#"
+"newColumnName:\"region\"" -> "core/column-addition0#"
+table4 -> "core/column-addition0#"
+"core/text-transform1#" -> table6
+"col-name:region" -> "core/text-transform1#"
+"expression:grel:value.replace(/,+\\s*$/,'').trim()" -> "core/text-transform1#"
+table5 -> "core/text-transform1#"
+"core/column-removal0#" -> table7
+"col-name:region_1" -> "core/column-removal0#"
+table6 -> "core/column-removal0#"
+"core/column-removal1#" -> table8
+"col-name:region_2" -> "core/column-removal1#"
+table7 -> "core/column-removal1#"
+"core/row-removal3#" -> table9
+"col-name:taster_name" -> "core/row-removal3#"
+"expression:\"isBlank(value)\"" -> "core/row-removal3#"
+table8 -> "core/row-removal3#"
+"core/text-transform2#" -> table10
+"col-name:taster_twitter_handle" -> "core/text-transform2#"
+"expression:grel:if(isBlank(value),_\"@WineEnthusiast\",_value)" -> "core/text-transform2#"
+table9 -> "core/text-transform2#"
+"core/mass-edit0#" -> table11
+"col-name:designation" -> "core/mass-edit0#"
+table10 -> "core/mass-edit0#"
+"core/mass-edit1#" -> table12
+"col-name:designation" -> "core/mass-edit1#"
+table11 -> "core/mass-edit1#"
+"core/mass-edit2#" -> table13
+"col-name:region" -> "core/mass-edit2#"
+table12 -> "core/mass-edit2#"
+"core/mass-edit3#" -> table14
+"col-name:title" -> "core/mass-edit3#"
+table13 -> "core/mass-edit3#"
+"core/mass-edit4#" -> table15
+"col-name:title" -> "core/mass-edit4#"
+table14 -> "core/mass-edit4#"
+"core/mass-edit5#" -> table16
+"col-name:winery" -> "core/mass-edit5#"
+table15 -> "core/mass-edit5#"
+"core/mass-edit6#" -> table17
+"col-name:winery" -> "core/mass-edit6#"
+table16 -> "core/mass-edit6#"
+"core/text-transform3#" -> table18
+"col-name:Column" -> "core/text-transform3#"
+"expression:value.toNumber()" -> "core/text-transform3#"
+table17 -> "core/text-transform3#"
+"core/text-transform4#" -> table19
+"col-name:points" -> "core/text-transform4#"
+"expression:value.toNumber()" -> "core/text-transform4#"
+table18 -> "core/text-transform4#"
+"core/text-transform5#" -> table20
+"col-name:price" -> "core/text-transform5#"
+"expression:value.toNumber()" -> "core/text-transform5#"
+table19 -> "core/text-transform5#"
+"core/text-transform6#" -> table21
+"col-name:country" -> "core/text-transform6#"
+"expression:value.trim()" -> "core/text-transform6#"
+table20 -> "core/text-transform6#"
+"core/text-transform7#" -> table22
+"col-name:country" -> "core/text-transform7#"
+"expression:value.replace(/[\\p{Zs}\\s]+/,'_')" -> "core/text-transform7#"
+table21 -> "core/text-transform7#"
+"core/text-transform8#" -> table23
+"col-name:description" -> "core/text-transform8#"
+"expression:value.trim()" -> "core/text-transform8#"
+table22 -> "core/text-transform8#"
+"core/text-transform9#" -> table24
+"col-name:description" -> "core/text-transform9#"
+"expression:value.replace(/[\\p{Zs}\\s]+/,'_')" -> "core/text-transform9#"
+table23 -> "core/text-transform9#"
+"core/text-transform10#" -> table25
+"col-name:designation" -> "core/text-transform10#"
+"expression:value.trim()" -> "core/text-transform10#"
+table24 -> "core/text-transform10#"
+"core/text-transform11#" -> table26
+"col-name:designation" -> "core/text-transform11#"
+"expression:value.replace(/[\\p{Zs}\\s]+/,'_')" -> "core/text-transform11#"
+table25 -> "core/text-transform11#"
+"core/text-transform12#" -> table27
+"col-name:province" -> "core/text-transform12#"
+"expression:value.trim()" -> "core/text-transform12#"
+table26 -> "core/text-transform12#"
+"core/text-transform13#" -> table28
+"col-name:province" -> "core/text-transform13#"
+"expression:value.replace(/[\\p{Zs}\\s]+/,'_')" -> "core/text-transform13#"
+table27 -> "core/text-transform13#"
+"core/text-transform14#" -> table29
+"col-name:region" -> "core/text-transform14#"
+"expression:value.trim()" -> "core/text-transform14#"
+table28 -> "core/text-transform14#"
+"core/text-transform15#" -> table30
+"col-name:region" -> "core/text-transform15#"
+"expression:value.replace(/[\\p{Zs}\\s]+/,'_')" -> "core/text-transform15#"
+table29 -> "core/text-transform15#"
+"core/text-transform16#" -> table31
+"col-name:taster_name" -> "core/text-transform16#"
+"expression:value.trim()" -> "core/text-transform16#"
+table30 -> "core/text-transform16#"
+"core/text-transform17#" -> table32
+"col-name:taster_name" -> "core/text-transform17#"
+"expression:value.replace(/[\\p{Zs}\\s]+/,'_')" -> "core/text-transform17#"
+table31 -> "core/text-transform17#"
+"core/text-transform18#" -> table33
+"col-name:taster_twitter_handle" -> "core/text-transform18#"
+"expression:value.trim()" -> "core/text-transform18#"
+table32 -> "core/text-transform18#"
+"core/text-transform19#" -> table34
+"col-name:taster_twitter_handle" -> "core/text-transform19#"
+"expression:value.replace(/[\\p{Zs}\\s]+/,'_')" -> "core/text-transform19#"
+table33 -> "core/text-transform19#"
+"core/text-transform20#" -> table35
+"col-name:title" -> "core/text-transform20#"
+"expression:value.trim()" -> "core/text-transform20#"
+table34 -> "core/text-transform20#"
+"core/text-transform21#" -> table36
+"col-name:title" -> "core/text-transform21#"
+"expression:value.replace(/[\\p{Zs}\\s]+/,'_')" -> "core/text-transform21#"
+table35 -> "core/text-transform21#"
+"core/text-transform22#" -> table37
+"col-name:variety" -> "core/text-transform22#"
+"expression:value.trim()" -> "core/text-transform22#"
+table36 -> "core/text-transform22#"
+"core/text-transform23#" -> table38
+"col-name:variety" -> "core/text-transform23#"
+"expression:value.replace(/[\\p{Zs}\\s]+/,'_')" -> "core/text-transform23#"
+table37 -> "core/text-transform23#"
+"core/text-transform24#" -> table39
+"col-name:winery" -> "core/text-transform24#"
+"expression:value.trim()" -> "core/text-transform24#"
+table38 -> "core/text-transform24#"
+"core/text-transform25#" -> table40
+"col-name:winery" -> "core/text-transform25#"
+"expression:value.replace(/[\\p{Zs}\\s]+/,'_')" -> "core/text-transform25#"
+table39 -> "core/text-transform25#"
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* Style for nodes representing workflow input ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow input ports */
+"col-name:winery_input_port" [label=""]
+"expression:value.replace(/[\\p{Zs}\\s]+/,'_')_input_port" [label=""]
+"expression:\"isBlank(value)\"_input_port" [label=""]
+"col-name:variety_input_port" [label=""]
+"col-name:region_input_port" [label=""]
+"col-name:price_input_port" [label=""]
+"col-name:region_2_input_port" [label=""]
+"expression:grel:if(isBlank(value),_\"@WineEnthusiast\",_value)_input_port" [label=""]
+"col-name:taster_name_input_port" [label=""]
+"col-name:taster_twitter_handle_input_port" [label=""]
+"expression:value.toNumber()_input_port" [label=""]
+"expression:grel:value.replace(/,+\\s*$/,'').trim()_input_port" [label=""]
+"col-name:region_1_input_port" [label=""]
+"col-name:designation_input_port" [label=""]
+"col-name:description_input_port" [label=""]
+"col-name:country_input_port" [label=""]
+"expression:join_([coalesce(cells['region_1'].value,''),coalesce(cells['province'].value,'')],'')_input_port" [label=""]
+"expression:value.trim()_input_port" [label=""]
+"col-name:points_input_port" [label=""]
+"col-name:province_input_port" [label=""]
+"col-name:title_input_port" [label=""]
+"col-name:Column_input_port" [label=""]
+table0_input_port [label=""]
+
+/* Style for nodes representing workflow output ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow output ports */
+table40_output_port [label=""]
+
+/* Edges from input ports to channels */
+"col-name:winery_input_port" -> "col-name:winery"
+"expression:value.replace(/[\\p{Zs}\\s]+/,'_')_input_port" -> "expression:value.replace(/[\\p{Zs}\\s]+/,'_')"
+"expression:\"isBlank(value)\"_input_port" -> "expression:\"isBlank(value)\""
+"col-name:variety_input_port" -> "col-name:variety"
+"col-name:region_input_port" -> "col-name:region"
+"col-name:price_input_port" -> "col-name:price"
+"col-name:region_2_input_port" -> "col-name:region_2"
+"expression:grel:if(isBlank(value),_\"@WineEnthusiast\",_value)_input_port" -> "expression:grel:if(isBlank(value),_\"@WineEnthusiast\",_value)"
+"col-name:taster_name_input_port" -> "col-name:taster_name"
+"col-name:taster_twitter_handle_input_port" -> "col-name:taster_twitter_handle"
+"expression:value.toNumber()_input_port" -> "expression:value.toNumber()"
+"expression:grel:value.replace(/,+\\s*$/,'').trim()_input_port" -> "expression:grel:value.replace(/,+\\s*$/,'').trim()"
+"col-name:region_1_input_port" -> "col-name:region_1"
+"col-name:designation_input_port" -> "col-name:designation"
+"col-name:description_input_port" -> "col-name:description"
+"col-name:country_input_port" -> "col-name:country"
+"expression:join_([coalesce(cells['region_1'].value,''),coalesce(cells['province'].value,'')],'')_input_port" -> "expression:join_([coalesce(cells['region_1'].value,''),coalesce(cells['province'].value,'')],'')"
+"expression:value.trim()_input_port" -> "expression:value.trim()"
+"col-name:points_input_port" -> "col-name:points"
+"col-name:province_input_port" -> "col-name:province"
+"col-name:title_input_port" -> "col-name:title"
+"col-name:Column_input_port" -> "col-name:Column"
+table0_input_port -> table0
+
+/* Edges from channels to output ports */
+table40 -> table40_output_port
+
+/* End of top-level graph */
+}
